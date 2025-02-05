@@ -17,8 +17,10 @@ jobs:
     - name: Cache AnalyzerSDK
       uses: actions/cache@v3
       with:
-        path: ~/.cache/git/AnalyzerSDK
-        key: ${{ runner.os }}-AnalyzerSDK-${{ hashFiles('cmake/ExternalAnalyzerSDK.cmake') }}
+        path: ${{ github.workspace }}/build/_deps/analyzersdk-src
+        key: AnalyzerSDK-${{ runner.os }}-${{ hashFiles('cmake/ExternalAnalyzerSDK.cmake') }}
+        restore-keys: |
+          AnalyzerSDK-${{ runner.os }}-
 
     - name: Build
       run: |
