@@ -1,17 +1,17 @@
-#ifndef SIMPLESERIAL_ANALYZER_H
-#define SIMPLESERIAL_ANALYZER_H
+#ifndef NEC_FLEX_ANALYZER_H
+#define NEC_FLEX_ANALYZER_H
 
 #include <Analyzer.h>
-#include "SimpleSerialAnalyzerSettings.h"
-#include "SimpleSerialAnalyzerResults.h"
-#include "SimpleSerialSimulationDataGenerator.h"
+#include "NEC_FlexAnalyzerSettings.h"
+#include "NEC_FlexAnalyzerResults.h"
+#include "NEC_FlexSimulationDataGenerator.h"
 #include <memory>
 
-class ANALYZER_EXPORT SimpleSerialAnalyzer : public Analyzer2
+class ANALYZER_EXPORT NEC_FlexAnalyzer : public Analyzer2
 {
 public:
-	SimpleSerialAnalyzer();
-	virtual ~SimpleSerialAnalyzer();
+	NEC_FlexAnalyzer();
+	virtual ~NEC_FlexAnalyzer();
 
 	virtual void SetupResults();
 	virtual void WorkerThread();
@@ -23,11 +23,11 @@ public:
 	virtual bool NeedsRerun();
 
 protected: //vars
-	SimpleSerialAnalyzerSettings mSettings;
-	std::unique_ptr<SimpleSerialAnalyzerResults> mResults;
+	NEC_FlexAnalyzerSettings mSettings;
+	std::unique_ptr<NEC_FlexAnalyzerResults> mResults;
 	AnalyzerChannelData* mSerial;
 
-	SimpleSerialSimulationDataGenerator mSimulationDataGenerator;
+	NEC_FlexSimulationDataGenerator mSimulationDataGenerator;
 	bool mSimulationInitilized;
 
 	//Serial analysis vars:
@@ -40,4 +40,4 @@ extern "C" ANALYZER_EXPORT const char* __cdecl GetAnalyzerName();
 extern "C" ANALYZER_EXPORT Analyzer* __cdecl CreateAnalyzer( );
 extern "C" ANALYZER_EXPORT void __cdecl DestroyAnalyzer( Analyzer* analyzer );
 
-#endif //SIMPLESERIAL_ANALYZER_H
+#endif //NEC_FLEX_ANALYZER_H

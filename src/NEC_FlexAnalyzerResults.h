@@ -1,16 +1,16 @@
-#ifndef SIMPLESERIAL_ANALYZER_RESULTS
-#define SIMPLESERIAL_ANALYZER_RESULTS
+#ifndef NEC_FLEX_ANALYZER_RESULTS
+#define NEC_FLEX_ANALYZER_RESULTS
 
 #include <AnalyzerResults.h>
 
-class SimpleSerialAnalyzer;
-class SimpleSerialAnalyzerSettings;
+class NEC_FlexAnalyzer;
+class NEC_FlexAnalyzerSettings;
 
-class SimpleSerialAnalyzerResults : public AnalyzerResults
+class NEC_FlexAnalyzerResults : public AnalyzerResults
 {
 public:
-	SimpleSerialAnalyzerResults( SimpleSerialAnalyzer* analyzer, SimpleSerialAnalyzerSettings* settings );
-	virtual ~SimpleSerialAnalyzerResults();
+	NEC_FlexAnalyzerResults( NEC_FlexAnalyzer* analyzer, NEC_FlexAnalyzerSettings* settings );
+	virtual ~NEC_FlexAnalyzerResults();
 
 	virtual void GenerateBubbleText( U64 frame_index, Channel& channel, DisplayBase display_base );
 	virtual void GenerateExportFile( const char* file, DisplayBase display_base, U32 export_type_user_id );
@@ -22,8 +22,8 @@ public:
 protected: //functions
 
 protected:  //vars
-	SimpleSerialAnalyzerSettings* mSettings;
-	SimpleSerialAnalyzer* mAnalyzer;
+	NEC_FlexAnalyzerSettings* mSettings;
+	NEC_FlexAnalyzer* mAnalyzer;
 };
 
-#endif //SIMPLESERIAL_ANALYZER_RESULTS
+#endif //NEC_FLEX_ANALYZER_RESULTS
