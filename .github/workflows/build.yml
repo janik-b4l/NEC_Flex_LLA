@@ -35,6 +35,15 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
+
+    - name: Cache AnalyzerSDK
+      uses: actions/cache@v3
+      with:
+        path: ${{ github.workspace }}/build/_deps/analyzersdk-src
+        key: AnalyzerSDK-${{ runner.os }}-${{ hashFiles('cmake/ExternalAnalyzerSDK.cmake') }}
+        restore-keys: |
+          AnalyzerSDK-${{ runner.os }}-
+          
     - name: Build
       run: |
         cmake -B ${{github.workspace}}/build/x86_64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=x86_64
@@ -63,6 +72,15 @@ jobs:
         echo "CC=/usr/bin/gcc-10" >> $GITHUB_ENV
         echo "CXX=/usr/bin/g++-10" >> $GITHUB_ENV
     - uses: actions/checkout@v4
+
+    - name: Cache AnalyzerSDK
+      uses: actions/cache@v3
+      with:
+        path: ${{ github.workspace }}/build/_deps/analyzersdk-src
+        key: AnalyzerSDK-${{ runner.os }}-${{ hashFiles('cmake/ExternalAnalyzerSDK.cmake') }}
+        restore-keys: |
+          AnalyzerSDK-${{ runner.os }}-
+          
     - name: Build
       run: |
         cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=Release
