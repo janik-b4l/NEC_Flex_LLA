@@ -13,6 +13,13 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
+
+    - name: Cache AnalyzerSDK
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/git/AnalyzerSDK
+        key: ${{ runner.os }}-AnalyzerSDK-${{ hashFiles('cmake/ExternalAnalyzerSDK.cmake') }}
+
     - name: Build
       run: |
         cmake -B ${{github.workspace}}/build -A x64
